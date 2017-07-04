@@ -58,7 +58,7 @@ characters outside the range a-zA-Z0-9 will be used.
 Every single request the client makes to the server will be in the form of a string. So, the server is going to sit on a socket, listening for connections, and then have to parse the strings it receives. Based on the contents of those strings, it will do the correct action.
 
 * <code>"REGISTER &lt;username&gt; &lt;password&gt;"</code>
-When the server receives a string that begins with the word REGISTER,
+<br />When the server receives a string that begins with the word REGISTER,
 it should interpret the second word in a string as a username and third word as a password.
 First, the server should store the username and password in RA(registered accounts)
 dictionary (username =key, password=value). Second, the server should add a key to
@@ -71,9 +71,40 @@ If cookie is not in AC list, it should store the username and newly generated se
 in ID dictionary, username as a key and session cookie as a value. E.g. {“username”:cookie_code}.
 It also should append the cookie into the AC list.
 When complete, the server should reply with "OK &lt;user session cookie&gt;”.
-* <code> </code>
-* <code> </code>
-* <code> </code>
+
+* <code> “LOGIN &lt;username&gt; &lt;password&gt;” </code>
+<br /> When the server receives a string that begins with the word LOGIN,
+it should interpret the second word in a string as a username and a third word as a password.
+ Then, it should follow the same process of generating a cookie and assigning it to the username
+ just like it is described in the REGISTER method.
+
+* <code> LOGOUT &lt;session cookie&gt; </code>
+<br /> When the server receives a string that begins with the word LOGOUT,
+it should interpret the rest of the string as a client’s session cookie.
+Then, it should go through ID(session cookie) dictionary and check whether any
+of the values match with user-provided cookie.
+If it does, then the server should delete the the session cookie from ID and also
+remove its key which is username. Also, it should delete the session cookie from AC(assigned cookies) list.
+If not, then the server should reply back with “KO”.
+
+* <code> "MESSAGE &lt;content&gt; &lt;session cookie&gt;"</code>
+<br /> When the server receives a string that begins with the word MESSAGE, it should assume the first second part of the string is a message and the third part is a session cookie. The server should take a session cookie and check if exists in the ID dictionary. If it does, then the message should be placed on the IMQ, and an "OK" response should be sent. If it doesn’t the server should reply back with “You should log in first.”
+
+* <code> "STORE &lt;username&gt; &lt;session cookie&gt;" </code>
+<br /> When the server receives a STORE comment, it should interpret the first second part of the string is a username and the third part is a session cookie. The server should take a session cookie and check if exists in the ID dictionary. If it does, then take the most recent message off of the IMQ and store it into the given user's mailbox. When done, the server should send an "OK" response. If the user does not exist, then the message should be left on the IMQ, and a "KO" result should be returned.
+
+* <code> "COUNT &lt;username&gt; &lt;session cookie&gt;" </code>
+<br />When the server receives a COUNT message, the server should reply with the number of messages waiting in the user's mailbox. It should reply with a string in the form
+"COUNTED &lt;n&gt;". If the username does not exist, a "KO" result should be returned.
+
+* <code> "DELMSG &lt;username&gt; &lt;session cookie&gt;" </code>
+<br /> When the server receives a DELMSG command, it will remove the first message from the given user's MBX queue. After removing the message, the server returns "OK". If the user has no messages, or if the user does not exist, the server returns "KO".
+
+* <code> "GETMSG &lt;username&gt; &lt;session cookie&gt;"</code>
+<br /> When the server receives a GETMSG command, it returns the first message on the user's mailbox queue. If the user does not exist, or if the user has no messages, it returns "KO".
+
+* <code> "DUMP" </code>
+<br /> When the server receives a DUMP command, it should print the contents of the IMQ and MBX to its terminal. This is a debugging command; it allows the client to ask the server to print its contents, which is useful to the server author. It should always return "OK".
 
 
 ## File descriptions
