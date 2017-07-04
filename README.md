@@ -130,7 +130,7 @@ What things you need to install the software and how to install them
 
 In order to run the code, make sure you have Python 2.7 since the protocol is implemented in Python 2.7
 Then, go to the terminal and run the server and client files separately.
-(python [server_code.py](server_code.py) localhost 8887)
+(python [server_code.py](server_code.py) localhost 8887).
 If you want to run the codes on the IDE like Pycharm,
 you can comment out sys.argv lines, instead specify
 your port and host.
@@ -145,7 +145,7 @@ In order to stress-test the server, run the bash files inside the StressTesting 
 
 * [Python2.7](https://www.python.org/)
 * [Python Socket library](https://docs.python.org/2/howto/sockets.html)
-* [Threading library] (https://docs.python.org/2/library/threading.html) -Higher-level threading interface
+* [Threading library](https://docs.python.org/2/library/threading.html)- Higher-level threading interface
 
 
 ## Authors
