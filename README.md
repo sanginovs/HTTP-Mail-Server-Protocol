@@ -21,7 +21,7 @@ Second, on a client-side, there should be a client python script that is used to
 connect to the server. There are several steps you have to follow in order to
 connect the client to the server.
 
-* a) Run the server code on a specific host and port. E.g. python server.py <host> <port>
+* a) Run the server code on a specific host and port. E.g. python server.py &lt;host&gt; &lt;port&gt;
 <br />Note: If you are not running client on localhost, then you should let your
 server’s host be 0.0.0.0 (accepts any IP address that is trying connect to the server).
 * b) Run client code and specify the host and port number to which the server is listening to.
@@ -46,7 +46,12 @@ The server will have the following data structures:
 
 ## Conventions
 
-When a protocol element is surrounded by <angle brackets>, it is assumed that the brackets themselves are not part of the protocol. For example, "REGISTER <username>" suggests protocol strings of the form "REGISTER sanginovs", where a single username, with no spaces or characters outside the range a-zA-Z0-9 will be used.
+When a protocol element is surrounded by &lt;angle brackets&gt;,
+it is assumed that the brackets themselves are not part of the protocol.
+For example, "REGISTER &lt;username&gt;"
+suggests protocol strings of the form "REGISTER sanginovs",
+where a single username, with no spaces or
+characters outside the range a-zA-Z0-9 will be used.
 
 
 
