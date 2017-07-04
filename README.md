@@ -28,7 +28,8 @@ server’s host be 0.0.0.0 (accepts any IP address that is trying connect to the
 E.g. python client.py host port. Note: If you are not running client from the localhost,
 you should specify the private ip address of the server as your host.
 
-Once the client connects to the server, the client makes every single request to the server in the form of a string. E.g. “REGISTER <username> <password>”
+Once the client connects to the server, the client makes every single request
+to the server in the form of a string. E.g. <code>“REGISTER <username> <password>.”</code>
 The first time client connects to the server, it should register with a username and password. Then, the server creates an account for the client and assigns to the client a randomly-generated cookie to keep track of client’s state. After receiving a cookie, client can now call different methods(checking mailbox, sending message, deleting message, etc) by only providing a cookie to the server.
 If the client calls the “logout”method, the server deletes the client’s cookie and closes client’s session. The client can start a new session by calling a “login” method. Thus, the server keeps track of every client’s state by assigning a session cookie when the client registers or logs in. The server destroys the client’s cookie when the client logs out.
 
