@@ -107,15 +107,6 @@ If not, then the server should reply back with “KO”.
 <br /> When the server receives a DUMP command, it should print the contents of the IMQ and MBX to its terminal. This is a debugging command; it allows the client to ask the server to print its contents, which is useful to the server author. It should always return "OK".
 
 
-## File descriptions
-
-* [server.py](server.py) -
-* [client.py](client.py) - 
-* [Stack.py](Stack.py) - 
-* [Documentation.pdf](Documentation.pdf)
-
-
-
 
 ## Getting Started
 
@@ -127,6 +118,8 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
+* Python 2.7 or Python 3.5
+* Venv
 
 ```
 
