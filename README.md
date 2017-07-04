@@ -118,40 +118,34 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-* Python 2.7 or Python 3.5
-* Venv
+* **Python 2.7**
+
+* Virtualenv for safe virtual environment
 
 ```
-
-### Installing
-
-You can simply run the [setup.sh](setup.sh) file which installs all the dependecies for you.
 
 
 
 ## Running the program
 
-In order to run the program, you just need to run [main.py](main.py) file. You can run it from your IDE or terminal.
-Make sure you are inside this directory. In the terminal, type:
-python [main.py](main.py)
+In order to run the code, make sure you have Python 2.7 since the protocol is implemented in Python 2.7
+Then, go to the terminal and run the server and client files separately.
+(python [server_code.py](server_code.py) localhost 8887)
+If you want to run the codes on the IDE like Pycharm,
+you can comment out sys.argv lines, instead specify
+your port and host.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+In order to stress-test the server, run the bash files inside the StressTesting folder.
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 
 ## Built With
 
-* [Python2.7](https://www.python.org/) - The programming language
-* [Sockets](link) - 
+* [Python2.7](https://www.python.org/)
+* [Python Socket library](https://docs.python.org/2/howto/sockets.html)
+* [Threading library] (https://docs.python.org/2/library/threading.html) -Higher-level threading interface
 
 
 ## Authors
@@ -162,7 +156,7 @@ Give an example
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 

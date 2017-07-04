@@ -14,11 +14,6 @@ It uses cookies in order to keep track of each user session and requires the cli
 *The program is very user-interactive.
 *The Mail Server protocol is multi-threaded. Used threading library to accomplish that.
 
-How to run the code:
-In order to run the code, make sure you have Python 2.7 since we implemented the protocol in Python 2.7
-Then, go to the terminal and run the server and client files separately. (python server.py localhost 8887)
-If you want to run the codes on the IDE like Pycharm, you can comment out sys.argv lines, instead specify
-your port and host.
 
 
 '''
