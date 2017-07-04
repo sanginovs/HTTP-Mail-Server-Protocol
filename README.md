@@ -53,6 +53,27 @@ suggests protocol strings of the form "REGISTER sanginovs",
 where a single username, with no spaces or
 characters outside the range a-zA-Z0-9 will be used.
 
+## The API
+
+Every single request the client makes to the server will be in the form of a string. So, the server is going to sit on a socket, listening for connections, and then have to parse the strings it receives. Based on the contents of those strings, it will do the correct action.
+
+* <code>"REGISTER &lt;username&gt; &lt;password&gt;"</code>
+When the server receives a string that begins with the word REGISTER,
+it should interpret the second word in a string as a username and third word as a password.
+First, the server should store the username and password in RA(registered accounts)
+dictionary (username =key, password=value). Second, the server should add a key to
+the MBX for that username, and an empty list of messages should be initialized at
+that location in the MBX. Third, the server should generate a random session cookie
+code for this username. After it generates a cookie, it should check whether the cookie
+exists in AC(assigned cookies) list in order to prevent duplicates.
+If there’s a duplicate of cookie in AC list, then the server should generate a new cookie.
+If cookie is not in AC list, it should store the username and newly generated session cookie
+in ID dictionary, username as a key and session cookie as a value. E.g. {“username”:cookie_code}.
+It also should append the cookie into the AC list.
+When complete, the server should reply with "OK &lt;user session cookie&gt;”.
+* <code> </code>
+* <code> </code>
+* <code> </code>
 
 
 ## File descriptions
